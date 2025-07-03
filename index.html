@@ -10,48 +10,24 @@
     }
     .carousel {
       overflow: hidden;
-      white-space: nowrap;
       position: relative;
       background: rgb(34,27,29);
       padding: 40px 0;
     }
     .carousel-track {
       display: flex;
-      align-items: center;
-      gap: 40px;
+      width: fit-content;
+      animation: scroll 30s linear infinite;
     }
     .carousel-track img {
       height: 80px;
+      margin: 0 40px;
       flex-shrink: 0;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
   </style>
 </head>
-<body>
-  <div class="carousel">
-    <div class="carousel-track" id="track">
-      <img src="https://via.placeholder.com/150x80?text=Logo+1" />
-      <img src="https://via.placeholder.com/150x80?text=Logo+2" />
-      <img src="https://via.placeholder.com/150x80?text=Logo+3" />
-      <img src="https://via.placeholder.com/150x80?text=Logo+4" />
-      <img src="https://via.placeholder.com/150x80?text=Logo+5" />
-    </div>
-  </div>
-  <script>
-    const track = document.getElementById("track");
-
-    // duplicate content for seamless loop
-    track.innerHTML += track.innerHTML;
-
-    let position = 0;
-    function scrollLogos() {
-      position -= 1; // pixel speed
-      if (position <= -track.scrollWidth / 2) {
-        position = 0; // reset for seamless loop
-      }
-      track.style.transform = `translateX(${position}px)`;
-      requestAnimationFrame(scrollLogos);
-    }
-    scrollLogos();
-  </script>
-</body>
-</html>
+<body
