@@ -20,54 +20,40 @@
       background: rgb(34,27,29);
       padding: 40px 0;
     }
-    .carousel-track {
+    .track {
       display: flex;
-      align-items: center;
-      position: relative;
-      will-change: transform;
+      width: calc(200%); /* doubled for seamless loop */
+      animation: scroll 30s linear infinite;
     }
-    .carousel-track img {
+    .track img {
       height: 160px;
-      width: auto;
       margin: 0 40px;
-      object-fit: contain;
       flex-shrink: 0;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
   </style>
 </head>
 <body>
   <div class="carousel">
-    <div class="carousel-track" id="track">
-      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/_NFP2090.jpg" alt="Logo1" />
-      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/2152520116.jpg" alt="Logo2" />
-      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/eqil_2022_269.JPG" alt="Logo3" />
-      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/GLAAD%20Awards%202024%20Champions%2C%20Founders%2C%20Gio%2C%20and%20Ken%20with%20award.jpg" alt="Logo4" />
-      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/GLAAD%20Awards%202024%20Onstage%20Award%20Acceptance.JPG" alt="Logo5" />
-      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/PXL_20250209_011140603~2.jpg" alt="Logo6" />
+    <div class="track">
+      <!-- first set -->
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/_NFP2090.jpg" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/2152520116.jpg" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/eqil_2022_269.JPG" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/GLAAD%20Awards%202024%20Champions%2C%20Founders%2C%20Gio%2C%20and%20Ken%20with%20award.jpg" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/GLAAD%20Awards%202024%20Onstage%20Award%20Acceptance.JPG" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/PXL_20250209_011140603~2.jpg" />
+      <!-- duplicate for seamless loop -->
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/_NFP2090.jpg" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/2152520116.jpg" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/eqil_2022_269.JPG" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/GLAAD%20Awards%202024%20Champions%2C%20Founders%2C%20Gio%2C%20and%20Ken%20with%20award.jpg" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/GLAAD%20Awards%202024%20Onstage%20Award%20Acceptance.JPG" />
+      <img src="https://gendercoolcelebrationicslink.s3.us-east-2.amazonaws.com/PXL_20250209_011140603~2.jpg" />
     </div>
   </div>
-  <script>
-    const track = document.getElementById("track");
-    let pos = 0;
-
-    function moveLogos() {
-      pos -= 1; // speed
-      track.style.transform = `translateX(${pos}px)`;
-
-      const first = track.children[0];
-      const firstWidth = first.offsetWidth + 80; // 80 for left/right margins
-
-      if (pos <= -firstWidth) {
-        // move first to end
-        track.appendChild(first);
-        // adjust pos so it does not jump
-        pos += firstWidth;
-      }
-
-      requestAnimationFrame(moveLogos);
-    }
-
-    moveLogos();
-  </script>
 </body>
 </html>
